@@ -1,0 +1,268 @@
+/* Custom styles to complement Tailwind */
+
+:root {
+    --accent: #FFD700;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Selection Color */
+::selection {
+    background-color: var(--accent);
+    color: #000;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Fix for smooth scroll with fixed header */
+html {
+    scroll-padding-top: 80px;
+}
+
+/* Utility to hide elements before animation */
+.reveal-on-scroll {
+    transition: all 0.8s ease-out;
+}
+
+/* Bento Grid System */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 240px;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.bento-item {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px border rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    padding: 2rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.bento-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.bento-wide {
+    grid-column: span 2;
+}
+
+.bento-tall {
+    grid-row: span 2;
+}
+
+.skill-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+    transition: all 0.5s ease;
+}
+
+.bento-item:hover .skill-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.bento-content {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.bento-item:hover .bento-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+    }
+    
+    .bento-large, .bento-wide, .bento-tall {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+}
+
+
+.bento-item h4 {
+    letter-spacing: -0.025em;
+    color: white;
+}
+
+.bento-item span {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Video Controls System */
+.video-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.video-controls {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 70%, rgba(0,0,0,0.5) 100%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.video-container:hover .video-controls,
+.video-container:not(.playing) .video-controls {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.control-btn:hover {
+    background: var(--accent);
+    color: black;
+    transform: scale(1.1);
+    border-color: var(--accent);
+}
+
+.sound-toggle {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+}
+
+.play-pause-btn i,
+.play-pause-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.sound-toggle i,
+.sound-toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Video state classes */
+.video-container.playing .play-pause-btn {
+    opacity: 0;
+}
+
+.video-container.playing:hover .play-pause-btn {
+    opacity: 1;
+}
+
+.expand-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+}
+
+/* Modal System */
+#video-modal {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#video-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#video-modal .modal-content {
+    transform: scale(0.9);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#video-modal.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-video-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    aspect-ratio: 16/9;
+    position: relative;
+}
+
+#close-modal {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#close-modal:hover {
+    color: var(--accent);
+    transform: rotate(90deg);
+}

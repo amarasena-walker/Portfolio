@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disath Amarasena | 2D & 3D Animator, UI & UX Designer</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        accent: '#FFD700',
+                        secondary: '#ffffff',
+                        'dark-teal': '#004D40',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Lenis for Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+</head>
+
+<body class="bg-secondary text-primary font-sans overflow-x-hidden">
+    <!-- Scroll Progress Bar -->
+    <div id="progress-bar" class="fixed top-0 left-0 w-0 h-1 bg-accent z-[100] transition-all duration-100"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-primary bg-opacity-90 backdrop-blur-md border-b border-white/10 transition-all duration-300"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex justify-between items-center">
+            <a href="#" class="text-accent font-display font-bold text-2xl tracking-tighter">DA</a>
+
+            <div class="hidden md:flex space-x-10">
+                <a href="index.html" class="text-white hover:text-accent font-medium transition-colors">Home</a>
+                <a href="about.html" class="text-white hover:text-accent font-medium transition-colors">About</a>
+                <a href="skills.html" class="text-white hover:text-accent font-medium transition-colors">Skills</a>
+                <a href="portfolio.html"
+                    class="text-white hover:text-accent font-medium transition-colors">Portfolio</a>
+                <a href="contact.html" class="text-white hover:text-accent font-medium transition-colors">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-white" id="mobile-menu-btn">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 w-full bg-primary border-b border-white/10 px-6 py-6 flex flex-col space-y-4">
+            <a href="index.html" class="text-white text-lg font-medium">Home</a>
+            <a href="about.html" class="text-white text-lg font-medium">About</a>
+            <a href="skills.html" class="text-white text-lg font-medium">Skills</a>
+            <a href="portfolio.html" class="text-white text-lg font-medium">Portfolio</a>
+            <a href="contact.html" class="text-white text-lg font-medium">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Social Sidebar -->
+    <aside class="fixed right-6 bottom-10 z-40 hidden lg:flex flex-col items-center space-y-6">
+        <a href="https://www.linkedin.com/in/disath-amarasena-a184a8355/" target="_blank" rel="noopener noreferrer"
+            class="text-primary hover:text-accent transition-transform hover:scale-110"><i
+                class='bx bxl-linkedin text-2xl'></i></a>
+        <a href="https://www.instagram.com/amarasena_walker/" target="_blank" rel="noopener noreferrer"
+            class="text-primary hover:text-accent transition-transform hover:scale-110"><i
+                class='bx bxl-instagram text-2xl'></i></a>
+        <div class="w-px h-24 bg-primary/20 mt-4"></div>
+    </aside>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col md:flex-row bg-primary overflow-hidden">
+        <!-- Text Column -->
+        <div class="flex-1 flex flex-col justify-center px-8 lg:px-24 py-32 md:py-0 animate-fade-in">
+            <h2 class="text-accent text-xl md:text-2xl font-display font-medium mb-4">Hey, I'm</h2>
+            <h1 class="text-white text-5xl md:text-7xl font-display font-bold leading-tight mb-8">
+                Disath <br class="hidden md:block"> Amarasena
+            </h1>
+            <p class="text-white/70 text-lg md:text-xl max-w-lg mb-12">
+                Specializing in 2D & 3D Animation and UI/UX Design. Bringing motion and clarity to digital experiences.
+            </p>
+            <div class="flex flex-wrap gap-6">
+                <a href="#projects"
+                    class="bg-accent text-primary px-8 py-3 rounded-full font-bold hover:bg-white transition-colors duration-300">View
+                    Projects</a>
+                <a href="#contact"
+                    class="border border-white/30 text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-primary transition-all duration-300">Get
+                    in Touch</a>
+            </div>
+        </div>
+        <!-- Image Column -->
+        <div class="flex-1 relative min-h-[50vh] md:min-h-screen overflow-hidden">
+            <img src="assets/bg-photo.png" alt="Disath Amarasena"
+                class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-8 lg:px-24 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-display font-bold mb-16 text-center reveal-on-scroll">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+                <div class="text-lg text-primary/80 space-y-6 reveal-on-scroll">
+                    <p>
+                        I'm a multidisciplinary designer with a passion for storytelling through animation and creating
+                        intuitive user interfaces. With a background in both technical and creative fields, I bridge the
+                        gap between imagination and execution.
+                    </p>
+                    <p>
+                        My work is driven by a commitment to excellence and a constant desire to push the boundaries of
+                        what's possible in the digital realm. Whether it's a 3D character coming to life or a complex
+                        app interface becoming seamless, I focus on every detail.
+                    </p>
+                </div>
+                <div class="relative group reveal-on-scroll">
+                    <div
+                        class="absolute -inset-4 bg-accent/20 rounded-3xl blur-2xl group-hover:bg-accent/30 transition-all duration-500 opacity-0 group-hover:opacity-100">
+                    </div>
+                    <img src="assets/about.jpg" alt="My Story"
+                        class="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 px-8 lg:px-24 bg-primary text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Expertise & Tools</h2>
+                <div class="w-24 h-1 bg-accent mx-auto"></div>
+                <p class="mt-8 text-white/60 max-w-2xl mx-auto">
+                    A deep dive into the industry-standard software and technologies I leverage to create high-impact digital experiences.
+                </p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Blender (moved to Large slot) -->
+                <div class="bento-item bento-large reveal-on-scroll">
+                    <div class="flex flex-col items-center text-center">
+                        <img src="assets/icons/blender.svg" alt="Blender" class="skill-icon">
+                        <div class="mt-6">
+                            <h4 class="text-2xl font-bold">Blender</h4>
+                            <p class="text-white/50 text-sm">3D creation and real-time rendering suite.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wide Skill: After Effects -->
+                <div class="bento-item bento-wide reveal-on-scroll">
+                    <div class="flex items-center gap-6">
+                        <img src="assets/icons/after-effects.svg" alt="After Effects" class="skill-icon">
+                        <div>
+                            <h4 class="text-xl font-bold">After Effects</h4>
+                            <p class="text-white/50 text-sm">Motion graphics, VFX, and compositing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Standard: Illustrator -->
+                <div class="bento-item reveal-on-scroll">
+                    <div class="flex flex-col items-center text-center">
+                        <img src="assets/icons/illustrator.svg" alt="Illustrator" class="skill-icon !w-16 !h-16">
+                        <span class="mt-4 font-bold text-sm">Illustrator</span>
+                        <p class="text-[10px] text-white/40 mt-1">Vector precision</p>
+                    </div>
+                </div>
+
+                <!-- Standard: Premiere Pro -->
+                <div class="bento-item reveal-on-scroll">
+                    <div class="flex flex-col items-center text-center">
+                        <img src="assets/icons/premiere-pro.svg" alt="Premiere Pro" class="skill-icon !w-16 !h-16">
+                        <span class="mt-4 font-bold text-sm">Premiere Pro</span>
+                        <p class="text-[10px] text-white/40 mt-1">Non-linear editing</p>
+                    </div>
+                </div>
+
+                <!-- Maya (moved to Wide slot) -->
+                <div class="bento-item bento-wide reveal-on-scroll">
+                    <div class="flex items-center gap-6">
+                        <img src="assets/icons/maya.svg" alt="Maya" class="skill-icon">
+                        <div>
+                            <h4 class="text-xl font-bold">Maya</h4>
+                            <p class="text-white/50 text-sm">Character rigging and cinematic 3D animation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unity (moved to Standard slot) -->
+                <div class="bento-item reveal-on-scroll">
+                    <div class="flex flex-col items-center text-center">
+                        <img src="assets\icons\unity78888.png" alt="Unity" class="skill-icon !w-18 !h-18">
+                        <span class="mt-4 font-bold text-sm">Unity</span>
+                        <p class="text-[10px] text-white/40 mt-1">Game Engine & AR/VR</p>
+                    </div>
+                </div>
+
+                <!-- Standard: Maya -->
+                <div class="bento-item reveal-on-scroll">
+                    <div class="flex flex-col items-center text-center">
+                        <img src="assets\icons\figmalogo122.png" alt="Figma" class="skill-icon !w-16 !h-16">
+                        <span class="mt-4 font-bold text-sm">Figma</span>
+                        <p class="text-[10px] text-white/40 mt-1">UI & UX Design</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-8 lg:px-24">
+
+            <!-- Animation Portfolio Section -->
+            <div class="mb-24">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold reveal-on-scroll">Animation Portfolio</h2>
+                    <p class="text-primary/60 max-w-sm reveal-on-scroll">A collection of 2D & 3D animation work from my
+                        portfolio.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                 <!-- Project Card: Nesko The Dragon -->
+<div class="group relative overflow-hidden rounded-3xl bg-white shadow-xl reveal-on-scroll">
+    <div class="aspect-video overflow-hidden bg-black video-container group">
+        <div class="video-placeholder w-full h-full cursor-pointer group/vid" 
+             data-video-url="https://www.youtube-nocookie.com/embed/xINk8S_Xpws?autoplay=1&enablejsapi=1&rel=0">
+            <img src="assets/videos/Thumbnails/neskothumbnail.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover/vid:scale-110" alt="Nesko The Dragon">
+            <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover/vid:bg-black/40 transition-all duration-300">
+                <div class="w-20 h-20 rounded-full bg-accent/90 flex items-center justify-center shadow-2xl transform transition-all duration-500 group-hover/vid:scale-110 group-hover/vid:bg-accent">
+                    <i data-lucide="play" class="w-8 h-8 text-primary fill-current"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-8">
+        <span class="text-dark-teal font-bold text-sm tracking-widest uppercase block mb-2">2D Game</span>
+        <h3 class="text-2xl font-bold mb-4">Nesko The Dragon</h3>
+        <p class="text-primary/70">A 2D side-scrolling platformer testing reflexes and timing through deadly traps and enemies.</p>
+    </div>
+</div>
+
+                    <!-- Project Card: A Small Mistake -->
+<div class="group relative overflow-hidden rounded-3xl bg-white shadow-xl reveal-on-scroll">
+    <div class="aspect-video overflow-hidden bg-black video-container group" style="position: relative;">
+        <div class="video-placeholder w-full h-full cursor-pointer group/vid" 
+             data-video-url="https://www.youtube-nocookie.com/embed/jQQuBY_P83A?autoplay=1&enablejsapi=1&rel=0">
+            <img src="assets/videos/Thumbnails/SmallMistakethumbnail.png" class="w-full h-full object-cover transition-transform duration-700 group-hover/vid:scale-110" alt="A Small Mistake">
+            <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover/vid:bg-black/40 transition-all duration-300">
+                <div class="w-20 h-20 rounded-full bg-accent/90 flex items-center justify-center shadow-2xl transform transition-all duration-500 group-hover/vid:scale-110 group-hover/vid:bg-accent">
+                    <i data-lucide="play" class="w-8 h-8 text-primary fill-current"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-8">
+        <span class="text-dark-teal font-bold text-sm tracking-widest uppercase block mb-2">2D Animation</span>
+        <h3 class="text-2xl font-bold mb-4">A Small Mistake</h3>
+        <p class="text-primary/70">A 2D cutout animation exploring responsibility and the enduring care of grandparents through storytelling.</p>
+    </div>
+</div>
+
+<!-- Project Card: Echoes of Tomorrow -->
+<div class="group relative overflow-hidden rounded-3xl bg-white shadow-xl reveal-on-scroll">
+    <div class="aspect-video overflow-hidden bg-black video-container group" style="position: relative;">
+        <div class="video-placeholder w-full h-full cursor-pointer group/vid" 
+             data-video-url="https://www.youtube-nocookie.com/embed/uIIpr3VE_iw?autoplay=1&enablejsapi=1&rel=0">
+            <img src="assets/videos/Thumbnails/Echosoftmrw.png" class="w-full h-full object-cover transition-transform duration-700 group-hover/vid:scale-110" alt="Echoes of Tomorrow">
+            <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover/vid:bg-black/40 transition-all duration-300">
+                <div class="w-20 h-20 rounded-full bg-accent/90 flex items-center justify-center shadow-2xl transform transition-all duration-500 group-hover/vid:scale-110 group-hover/vid:bg-accent">
+                    <i data-lucide="play" class="w-8 h-8 text-primary fill-current"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-8">
+        <span class="text-dark-teal font-bold text-sm tracking-widest uppercase block mb-2">3D Animation</span>
+        <h3 class="text-2xl font-bold mb-4">Echoes of Tomorrow</h3>
+        <p class="text-primary/70">A cinematic exploration of a futuristic landscape and its atmospheric storytelling.</p>
+    </div>
+</div>
+
+                   <!-- Project Card: Chess Board -->
+<div class="group relative overflow-hidden rounded-3xl bg-white shadow-xl reveal-on-scroll">
+    <div class="aspect-video overflow-hidden bg-black video-container group" style="position: relative;">
+        <div class="video-placeholder w-full h-full cursor-pointer group/vid" 
+             data-video-url="https://www.youtube-nocookie.com/embed/jo7KoCw8mpk?autoplay=1&enablejsapi=1&rel=0">
+            <img src="assets/videos/Thumbnails/chess.png" class="w-full h-full object-cover transition-transform duration-700 group-hover/vid:scale-110" alt="Strategic Motion">
+            <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover/vid:bg-black/40 transition-all duration-300">
+                <div class="w-20 h-20 rounded-full bg-accent/90 flex items-center justify-center shadow-2xl transform transition-all duration-500 group-hover/vid:scale-110 group-hover/vid:bg-accent">
+                    <i data-lucide="play" class="w-8 h-8 text-primary fill-current"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-8">
+        <span class="text-dark-teal font-bold text-sm tracking-widest uppercase block mb-2">3D Animation</span>
+        <h3 class="text-2xl font-bold mb-4">Strategic Motion</h3>
+        <p class="text-primary/70">A stylized animation highlighting complex physics and character movement on a chess board.</p>
+    </div>
+</div>
+
+                   <!-- Project Card: Done and Dusted -->
+<div class="group relative overflow-hidden rounded-3xl bg-white shadow-xl reveal-on-scroll">
+    <div class="aspect-video overflow-hidden bg-black video-container group" style="position: relative;">
+        <div class="video-placeholder w-full h-full cursor-pointer group/vid" 
+             data-video-url="https://www.youtube-nocookie.com/embed/Da56EwF_E7k?autoplay=1&enablejsapi=1&rel=0">
+            <img src="assets/videos/Thumbnails/doneanddusted.png" class="w-full h-full object-cover transition-transform duration-700 group-hover/vid:scale-110" alt="Done and Dusted">
+            <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover/vid:bg-black/40 transition-all duration-300">
+                <div class="w-20 h-20 rounded-full bg-accent/90 flex items-center justify-center shadow-2xl transform transition-all duration-500 group-hover/vid:scale-110 group-hover/vid:bg-accent">
+                    <i data-lucide="play" class="w-8 h-8 text-primary fill-current"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-8">
+        <span class="text-dark-teal font-bold text-sm tracking-widest uppercase block mb-2">2D/3D Animation</span>
+        <h3 class="text-2xl font-bold mb-4">Done and Dusted</h3>
+        <p class="text-primary/70">An energetic animation showcase focusing on dynamic transitions and visual impact.</p>
+    </div>
+</div>
+
+                   <!-- Project Card: UI Project -->
+<div class="group relative overflow-hidden rounded-3xl bg-white shadow-xl reveal-on-scroll">
+    <div class="aspect-video overflow-hidden bg-black video-container group" style="position: relative;">
+        <div class="video-placeholder w-full h-full cursor-pointer group/vid" 
+             data-video-url="https://www.youtube-nocookie.com/embed/TyumLry1WD0?autoplay=1&enablejsapi=1&rel=0">
+            <img src="assets/videos/Thumbnails/ui.png" class="w-full h-full object-cover transition-transform duration-700 group-hover/vid:scale-110" alt="Interface Motion">
+            <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover/vid:bg-black/40 transition-all duration-300">
+                <div class="w-20 h-20 rounded-full bg-accent/90 flex items-center justify-center shadow-2xl transform transition-all duration-500 group-hover/vid:scale-110 group-hover/vid:bg-accent">
+                    <i data-lucide="play" class="w-8 h-8 text-primary fill-current"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-8">
+        <span class="text-dark-teal font-bold text-sm tracking-widest uppercase block mb-2">UI Design</span>
+        <h3 class="text-2xl font-bold mb-4">Interface Motion</h3>
+        <p class="text-primary/70">Demonstrating how motion design enhances user experience and interface clarity.</p>
+    </div>
+</div>
+</div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="flex flex-col md:flex-row bg-white border-t border-gray-100">
+        <!-- Contact Info -->
+        <div class="flex-1 bg-primary text-white p-12 lg:p-24 flex flex-col justify-center reveal-on-scroll">
+            <h2 class="text-4xl md:text-5xl font-display font-bold mb-12">Get in <br> Touch</h2>
+            <div class="space-y-8">
+                <div class="flex items-start space-x-6">
+                    <div class="bg-white/10 p-4 rounded-xl">
+                        <i data-lucide="mail" class="w-6 h-6 text-accent"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Email</h4>
+                        <p class="text-white/60">disathamarasena308@gmail.com</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-6">
+                    <div class="bg-white/10 p-4 rounded-xl">
+                        <i data-lucide="map-pin" class="w-6 h-6 text-accent"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Location</h4>
+                        <p class="text-white/60">Colombo, Sri Lanka</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 flex space-x-6 md:hidden">
+                <a href="https://www.linkedin.com/in/disath-amarasena-a184a8355/" target="_blank"
+                    rel="noopener noreferrer" class="text-white hover:text-accent transition-colors"><i
+                        class='bx bxl-linkedin text-2xl'></i></a>
+                <a href="https://www.instagram.com/amarasena_walker/" target="_blank" rel="noopener noreferrer"
+                    class="text-white hover:text-accent transition-colors"><i class='bx bxl-instagram text-2xl'></i></a>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <div class="flex-1 p-12 lg:p-24 reveal-on-scroll">
+            <form id="contact-form" class="space-y-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="flex flex-col">
+                        <label for="first-name" class="font-bold text-sm mb-2">First Name</label>
+                        <input type="text" id="first-name"
+                            class="bg-gray-50 border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-accent transition-colors"
+                            placeholder="John">
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="last-name" class="font-bold text-sm mb-2">Last Name</label>
+                        <input type="text" id="last-name"
+                            class="bg-gray-50 border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-accent transition-colors"
+                            placeholder="Doe">
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <label for="email" class="font-bold text-sm mb-2">Email</label>
+                    <input type="email" id="email"
+                        class="bg-gray-50 border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-accent transition-colors"
+                        placeholder="john@example.com">
+                </div>
+                <div class="flex flex-col">
+                    <label for="message" class="font-bold text-sm mb-2">Message</label>
+                    <textarea id="message" rows="5"
+                        class="bg-gray-50 border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-accent transition-colors resize-none"
+                        placeholder="Tell me about your project..."></textarea>
+                </div>
+                <button type="submit"
+                    class="w-full bg-dark-teal text-white py-4 rounded-full font-bold hover:bg-primary transition-colors duration-300">Send
+                    Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-primary py-12 text-center text-white/40 text-sm border-t border-white/5">
+        <p>&copy; 2026 Disath Amarasena. All rights reserved. Designed with precision.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top"
+        class="fixed right-24 bottom-10 z-50 w-12 h-12 bg-accent text-primary rounded-full shadow-2xl flex items-center justify-center opacity-0 translate-y-10 transition-all duration-500 hover:bg-white hover:-translate-y-1">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 z-[200] bg-black/95 backdrop-blur-xl">
+        <div class="modal-content modal-video-wrapper">
+            <button id="close-modal" aria-label="Close Modal">
+                <i data-lucide="x" class="w-10 h-10"></i>
+            </button>
+            <iframe id="modal-iframe" class="w-full h-full rounded-3xl shadow-2xl" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
